@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull : false
         },
         tanggal_pesan : {
-            type : DataTypes.DATE,
+            type : DataTypes.DATETIME,//ubah DATEONLY ke DATETIME
             allowNull : false
         }
     }, {
