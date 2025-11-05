@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement : true
         },
         tipe_kamar : {
-            type : DataTypes.VARCHAR(50),
+            type : DataTypes.STRING,
             allowNull : false
         },
         kapasitas_tamu : {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull : false
         },
         lantai : {
-            type : DataTypes.VARCHAR(10),
+            type : DataTypes.STRING,
             allowNull : false
         },
         fasilitas : {
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull : false
         },
         tanggal_pesan : {
-            type : DataTypes.DATETIME,//ubah DATEONLY ke DATETIME
+            type : DataTypes.DATE,
             allowNull : false
         }
     }, {
