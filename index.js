@@ -20,3 +20,23 @@ db.sequelize.sync()
     })
 
 
+// CREATE - Tambah hotel baru
+    app.post("/hotel", async(req, res) => {
+        const data = req.body;
+        try {
+            const hotel = await db.Hotel.create(data);
+            res.send(hotel);
+        } catch(err) {
+            res.status(500).send(err);
+        }
+    });
+
+    // READ - Ambil semua hotel
+    app.get("/hotel", async(req, res) => {
+        try {
+            const hotel = await db.Hotel.findAll();
+            res.send(hotel);
+        } catch(err) {
+            res.status(500).send(err);
+        }
+    });
