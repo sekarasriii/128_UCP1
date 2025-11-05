@@ -40,3 +40,36 @@ db.sequelize.sync()
             res.status(500).send(err);
         }
     });
+
+    // UPDATE - Update hotel by ID
+    app.put("/hotel/:id", async(req, res) => {
+        const id = req.params.id;
+        const data = req.body;
+
+        try {
+            const hotel = await db.Hotel.findByPk(id);
+            if (!hotel) {
+                return res.status(404).send({message: "Hotel tidak ditemukan"});
+            }
+            await hotel.update(data);
+            res.send({message: "Hotel berhasil diupdate", hotel});
+        } catch(err) {
+            res.status(500).send(err);
+        }
+    });
+
+    // DELETE - Hapus hotel by ID
+    app.delete("/hotel/:id", async(req, res) => {
+        const id = req.params.id;
+
+        try {
+            const hotel = await db.Hotel.findByPk(id);
+            if (!hotel) {
+                return res.status(404).send({message: "Hotel tidak ditemukan"});
+            }
+            await hotel.destroy();
+            res.send({message: "Hotel berhasil dihapus"});
+        } catch(err) {
+            res.status(500).send(err);
+        }
+    });
